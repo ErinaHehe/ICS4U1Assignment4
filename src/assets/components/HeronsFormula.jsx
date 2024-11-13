@@ -3,12 +3,14 @@ import { useState } from 'react';
 
 function heronsFormula(e) {
     e.preventDefault();
+    const [a, setA] = useState(0);
+    const [b, setB] = useState(0);
+    const [h, setH] = useState(0);
+    const [result, setResult] = useState("Calculate");
+
     const angleA = parseFloat(document.getElementById('angleA').value);
-    const a = parseFloat(document.getElementById('sideA2').value);
-    const b = parseFloat(document.getElementById('sideB2').value);
     const angleARad = angleA * (Math.PI / 180);
-    const h = b * Math.sin(angleARad);
-    let result;
+    // const h = b * Math.sin(angleARad);
 
     if (angleA < 90) {
         if (a < h) {
@@ -36,7 +38,7 @@ function heronsFormula(e) {
             <label>Side B:</label>
             <input type="number" value={b} onChange={(event) => { setB(event.target.value) }} required />
             <label>Side C:</label>
-            <input type="number" value={c} onChange={(event) => { setB(event.target.value) }} required />
+            <input type="number" value={h} onChange={(event) => { setH(event.target.value) }} required />
             <label>Area (Result):</label>
             <input type="text" value={result} readOnly />
             <input type="submit" value="Calculate" />
